@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+
+        Person person01 = new Person();
+        Person person02 = new Person();
+
+        person01.anlegen();
+        person01.anzeigen();
+
+        person02.anlegen();
+        person02.anzeigen();
+       // System.out.println(person01.name);
+        // person01.name = "Lotti";
+        person01.anzeigen();
+    }
+}
