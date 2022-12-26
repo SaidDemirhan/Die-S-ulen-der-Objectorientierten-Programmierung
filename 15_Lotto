@@ -1,0 +1,118 @@
+
+/*
+Lotto
+
+6 aus 49 ermitteln
+
+Wir brauchen 6 Zufallszahlen zwischen 1 und 49
+
+Zahlen dürfen nicht doppelt vorkommen
+
+Wir geben die gezogenen Zahlen aus
+
+
+Random
+
+		
+
+Integer Array ?
+
+
+
+Aufgabe:
+
+Es soll eine Ziehung der Lottozahlen entworfen werden.
+Die gezogenen Zahlen sollen mit der vorher gespeicherten Zahlen verglichen werden.
+Ausgegeben wird die Trefferquote.
+
+*/
+
+
+///////****************************
+// in die Main einfügen
+
+Lotto lotto = new Lotto();
+        lotto.Lottofuellen();
+        lotto.Lottoziehen();
+        lotto.Gewinn();
+///////***************************
+
+
+
+class Lotto
+{
+    ArrayList<Integer> liste = new ArrayList<>();
+    ArrayList<Integer> ziehung = new ArrayList<>();
+    Random zufall = new Random();
+    public int zahl = zufall.nextInt(49 )+1;
+
+    public void Lottofuellen() {
+        for (int i = 0; i < 6; i++) {
+            zahl = zufall.nextInt(49) + 1;
+            //System.out.println(zahl);
+           // System.out.println();
+            if (liste.contains(zahl)) {
+                i--;
+                continue;
+            }
+            //System.out.print("Zahl:");
+           // System.out.println(zahl);
+
+            //System.out.println();
+            liste.add((Integer) zahl);
+
+        }
+        System.out.println("Es wurden getippt: ");
+        for (int ziffer : liste)
+        {
+            System.out.println(ziffer);
+        }
+    }
+    public void Lottoziehen() {
+        for (int i = 0; i < 6; i++) {
+            zahl = zufall.nextInt(49) + 1;
+           // System.out.println(zahl);
+           // System.out.println();
+            if (ziehung.contains(zahl)) {
+                i--;
+                continue;
+            }
+            //System.out.print("Zahl:");
+           // System.out.println(zahl);
+
+            //System.out.println();
+            ziehung.add((Integer) zahl);
+
+        }
+        System.out.println("Es wurden gezogen: ");
+        for (int ziffer : ziehung)
+        {
+
+            System.out.println(ziffer);
+        }
+        System.out.println("****************");
+    }
+
+    public void Gewinn()
+    {
+
+        int treffer = 0;
+        // Listen miteinander vergleichen
+        for (int ziffer : liste)
+        {
+            //System.out.println(ziffer);
+            if (ziehung.contains(ziffer))
+            {
+                treffer += 1;
+            }
+        }
+        if (treffer > 0)
+        {
+            System.out.printf("Sie haben %s Richtige", treffer);
+        }
+        else
+        {
+            System.out.println("Sie haben leider nix");
+        }
+    }
+}
